@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.4.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '>= 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -19,11 +19,27 @@ gem 'uglifier', '>= 1.3.0'
 # database
 gem 'pg'
 
-# twitter bootstrap
+# he less-rails-bootstrap project hooks into less-rails and less.rb, 
+# making Bootstrap's source LESS files, compiled CSS, and JavaScript 
+# files available in the Rails 3.x and 4.x asset pipeline.
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
-gem 'commonjs'
+
+# Integrates normalize.css with the rails asset pipeline
+gem 'normalize-rails'
+
+gem 'chart-js-rails'
+
+# Includes fla-icon-css - a collection of all country flags in SVG
+gem 'flag-icons-rails'
+
+# Add jquery framework for rails
+gem 'jquery-rails'
+gem 'jqvmap-rails'
+
+# Integrates font-awesome.min.css
+gem "font-awesome-rails"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

@@ -10,7 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require Chart.min
+//= require jquery.vmap
 //= require rails-ujs
+//= require twitter/bootstrap
+//= require jquery
+//= require dashboard
+//= require main
+//= require plugins
+//= require widgets
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+

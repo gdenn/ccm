@@ -1,5 +1,5 @@
 class PipelinesController < ApplicationController
-    layout "base"
+    layout "sufee-admin-dashboard"
   def index
     @pipelines = Pipeline.all
   end
