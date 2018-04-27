@@ -1,0 +1,31 @@
+
+<div class="container">
+  <h1> Pipelines </h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Team</th>
+        <th scope="col">Concourse</th>
+        <th scope="col">Last Poll</th>
+        <th scope="col">Discovered</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @pipelines.each_with_index do |pipeline, index| %>
+      <%= render partial: "pipeline", locals: { 
+        index: index + 1,
+        status: pipeline.status,
+        team: pipeline.team,
+        concourse: pipeline.concourse,
+        name: pipeline.name, 
+        last_poll: pipeline.last_poll,
+        discovered: pipeline.discovered
+      } %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+

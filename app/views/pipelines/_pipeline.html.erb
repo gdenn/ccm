@@ -1,0 +1,16 @@
+<tr>
+  <th scope="row"><%= index %></th>
+  <td><%= name %></td>
+  <% case status
+  when "active" %>
+  <td class="text-success"><%= status %></td>
+  <% when "failure" %>
+  <td class="text-danger"><%= status %></td>
+  <% else %>
+  <td class="text-primary"><%= status %></td>
+  <% end %>
+  <td><%= team %></td>
+  <td><%= concourse %></td>
+  <td><%= last_poll %></td>
+  <td><%= discovered %></td>
+</tr>
