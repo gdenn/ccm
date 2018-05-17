@@ -19,11 +19,16 @@ gem 'uglifier', '>= 1.3.0'
 # database
 gem 'pg'
 
+# Better error messages
+gem 'better_errors'
+gem 'binding_of_caller'
+
 # he less-rails-bootstrap project hooks into less-rails and less.rb, 
 # making Bootstrap's source LESS files, compiled CSS, and JavaScript 
 # files available in the Rails 3.x and 4.x asset pipeline.
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'sprockets', '3.6.3'
 gem "twitter-bootstrap-rails"
 
 # Integrates normalize.css with the rails asset pipeline
@@ -64,7 +69,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # visualize models and db shemas as .dot files
+  gem 'railroady'
+  # used to fake in seeds.rb to generate random entries
+  gem 'faker'
 end
+
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

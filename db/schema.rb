@@ -10,20 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_26_155726) do
+ActiveRecord::Schema.define(version: 2018_05_17_132302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "pipelines", force: :cascade do |t|
+  create_table "build", force: :cascade do |t|
+    t.integer "build_number"
+    t.bigint "pipeline_id"
+    t.index ["pipeline_id"], name: "index_build_on_pipeline_id"
+  end
+
+  create_table "concourses", force: :cascade do |t|
     t.string "name"
-    t.date "last_poll"
-    t.date "discovered"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "host"
+  end
+
+  create_table "pipeline", force: :cascade do |t|
+    t.string "name"
     t.string "status"
-    t.string "team"
-    t.string "concourse"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_pipeline_on_team_id"
+  end
+
+  create_table "team", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password"
+    t.bigint "concourse_id"
+    t.index ["concourse_id"], name: "index_team_on_concourse_id"
   end
 
 end
