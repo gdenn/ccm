@@ -7,23 +7,13 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Status</th>
-        <th scope="col">Team</th>
-        <th scope="col">Concourse</th>
-        <th scope="col">Last Poll</th>
-        <th scope="col">Discovered</th>
+        <th scope="col">Last Update</th>
+        <th scope="col">Created At</th>
       </tr>
     </thead>
     <tbody>
     <% @pipelines.each_with_index do |pipeline, index| %>
-      <%= render partial: "pipeline", locals: { 
-        index: index + 1,
-        status: pipeline.status,
-        team: pipeline.team,
-        concourse: pipeline.concourse,
-        name: pipeline.name, 
-        last_poll: pipeline.last_poll,
-        discovered: pipeline.discovered
-      } %>
+      <%= render partial: "pipeline", locals: { pipeline: pipeline, index: index } %>
     <% end %>
     </tbody>
   </table>

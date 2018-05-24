@@ -1,16 +1,14 @@
 <tr>
   <th scope="row"><%= index %></th>
-  <td><%= name %></td>
-  <% case status
+  <td><%= pipeline.name %></td>
+  <% case pipeline.status
   when "active" %>
-  <td class="text-success"><%= status %></td>
+  <td class="text-success"><%= pipeline.status %></td>
   <% when "failure" %>
-  <td class="text-danger"><%= status %></td>
+  <td class="text-danger"><%= pipeline.status %></td>
   <% else %>
-  <td class="text-primary"><%= status %></td>
+  <td class="text-primary"><%= pipeline.status %></td>
   <% end %>
-  <td><%= team %></td>
-  <td><%= concourse %></td>
-  <td><%= last_poll %></td>
-  <td><%= discovered %></td>
+  <td><%= pipeline.updated_at %></td>
+  <td><%= pipeline.created_at %></td>
 </tr>
