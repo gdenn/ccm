@@ -10,7 +10,7 @@ def create_builds(job:)
   10.times { |i| job.builds.create!(
     build_number: i, 
     status: ["aborted", "failed", "succeeded", "pending", "started"].sample,
-    triggered: started, 
+    started: started, 
     finished: finished
   ) }
 end
@@ -44,7 +44,7 @@ def create_concourses
     c = Concourse.create!(
       name: Faker::GameOfThrones.character, 
       host: Faker::Internet.ip_v4_address, 
-      type: ["production", "staging"].sample
+      env_type: ["production", "staging"].sample
     )
     create_teams(concourse: c)
   end 
