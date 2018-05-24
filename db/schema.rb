@@ -10,46 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_104903) do
+ActiveRecord::Schema.define(version: 2018_05_17_132302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "builds", force: :cascade do |t|
     t.integer "build_number"
-    t.bigint "pipeline_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "status"
     t.date "started"
     t.date "finished"
-    t.index ["pipeline_id"], name: "index_builds_on_pipeline_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "job_id"
+    t.index ["job_id"], name: "index_builds_on_job_id"
   end
 
   create_table "concourses", force: :cascade do |t|
     t.string "name"
     t.string "host"
-    t.bigint "concourse_id"
+    t.string "env_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "env_type"
-    t.index ["concourse_id"], name: "index_concourses_on_concourse_id"
   end
 
   create_table "jobs", force: :cascade do |t|
+    t.string "name"
+    t.boolean "paused"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.bigint "pipeline_id"
+    t.index ["pipeline_id"], name: "index_jobs_on_pipeline_id"
   end
 
   create_table "pipelines", force: :cascade do |t|
     t.string "name"
     t.string "status"
-    t.bigint "team_id"
-    t.bigint "pipeline_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pipeline_id"], name: "index_pipelines_on_pipeline_id"
+    t.bigint "team_id"
     t.index ["team_id"], name: "index_pipelines_on_team_id"
   end
 
@@ -57,20 +56,10 @@ ActiveRecord::Schema.define(version: 2018_05_24_104903) do
     t.string "name"
     t.string "username"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "concourse_id"
-    t.bigint "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["concourse_id"], name: "index_teams_on_concourse_id"
-    t.index ["team_id"], name: "index_teams_on_team_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "concourses", "concourses"
-  add_foreign_key "pipelines", "pipelines"
-  add_foreign_key "teams", "teams"
 end
