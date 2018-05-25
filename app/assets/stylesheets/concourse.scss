@@ -1,0 +1,22 @@
+// Place all the styles related to the concourse controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+tr {
+  height: 60px;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+table{
+  height: 500px;
+  display: -moz-groupbox;    // For firefox bad effect
+}
+tbody{
+  position: relative;
+  left: 50px;
+  height: 60px;
+  overflow-y: scroll;
+  height: 100%;            //  <-- Select the height of the body
+}
